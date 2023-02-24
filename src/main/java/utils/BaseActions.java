@@ -17,14 +17,15 @@ public class BaseActions {
     protected static WebDriverWait wait;
     protected static WebElement element;
     private int counter = 1;
+    // Prints a comment to console
     protected void comment(String message) {
         System.out.println("STEP " + counter + ": " + message.toUpperCase());
         counter++;
     }
-
     protected void restartCounter() {
         counter = 1;
     }
+    // Reads browser key value in Configurations.properties file and creates a driver object based on that value
     private void init(String url) throws MalformedURLException {
         switch (ReadProperties.readConfigBrowser().toLowerCase()) {
             case "chrome":
@@ -46,6 +47,8 @@ public class BaseActions {
         driver.manage().window().maximize();
         driver.get(url);
     }
+
+    // Just handles init methode
     public void openUrl(String URL) {
         try {
             this.init(URL);
@@ -71,14 +74,17 @@ public class BaseActions {
         wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    // Clicks WebElement
     protected void clickOnElement(By locator) {
         element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         element.click();
     }
+    // Enters text to WebElement
     protected void enterText(By locator, String text) {
         element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         element.sendKeys(text);
     }
+    // Clears and Enters text to WebElement
     protected void enterTextWithClear(By locator, String text) {
         WebElement element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         element.clear();
