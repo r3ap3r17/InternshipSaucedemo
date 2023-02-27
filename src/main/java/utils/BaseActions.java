@@ -67,6 +67,11 @@ public class BaseActions {
     public void quitDriver() {
         driver.quit();
     }
+    // Waits for url to change
+    public void waitForUrlChange(String url, int time) {
+        wait = new WebDriverWait(driver, time);
+        wait.until(ExpectedConditions.urlToBe(url));
+    }
     // Waits until element is visible and returns WebElement obj
     protected WebElement waitForVisible(By locator, int time) {
         wait  = new WebDriverWait(driver, time);
@@ -76,6 +81,11 @@ public class BaseActions {
     protected void waitToBeVisible(By locator, int time) {
         wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    // Just waits for WebElement not to be visible
+    protected void waitNotToBeVisible(By locator, int time) {
+        wait = new WebDriverWait(driver, time);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
     // Waits until all elements are visible and returns WebElements
     protected List<WebElement> waitForVisibleElements(By locator, int time) {
@@ -103,6 +113,11 @@ public class BaseActions {
         element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         return element.getText();
     }
+    // Returns Element attribute's text
+    protected String getAttributeValueFromElement(By locator, String attribute) {
+        element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
+        return element.getAttribute(attribute);
+    }
     // Waits for Select and selects option by text
     public void selectOptionByVisibleText(By locator, String option) {
         select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
@@ -118,6 +133,7 @@ public class BaseActions {
         select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
         select.selectByIndex(index);
     }
+    // Returns number of all options from select box
     public int getAllOptions(By locator) {
         select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
         return select.getOptions().size();

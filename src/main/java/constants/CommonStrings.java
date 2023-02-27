@@ -7,6 +7,7 @@ public class CommonStrings {
     public static final int TIMEOUT_LONG = 60;
     // All urls used
     public static final String LOGIN_PAGE_URL = "https://www.saucedemo.com";
+    public static final String SAUCE_LABS_WEBSITE = "https://saucelabs.com/";
     public static final String PRODUCT_PAGE_URL = "/inventory.html";
     // Usernames used
     public static final String STANDARD_USER = "standard_user";

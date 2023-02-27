@@ -10,7 +10,7 @@ public class LoginPage extends BaseActions {
     private final By usernameInput = By.xpath("//input[@id='user-name']");
     private final By passwordInput = By.xpath("//input[@id='password']");
     private final By errorMessageBox = By.xpath("//h3[@data-test='error']");
-    private final By burgerMenu = By.xpath("//button[@id='react-burger-menu-btn']");
+    private final By inventoryContainer = By.xpath("//div[@id='inventory_container']");
 
     public void loginSuccess(String username, String password) {
         enterTextWithClear(usernameInput, username);
@@ -29,7 +29,7 @@ public class LoginPage extends BaseActions {
     }
 
     public void verifyProductsPage() {
-        waitToBeVisible(burgerMenu, CommonStrings.TIMEOUT_MEDIUM);
+        waitToBeVisible(inventoryContainer, CommonStrings.TIMEOUT_MEDIUM);
     }
 
 }

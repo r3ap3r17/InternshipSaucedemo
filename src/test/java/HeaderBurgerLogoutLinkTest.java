@@ -2,11 +2,10 @@ import constants.CommonStrings;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import pages.LoginPage;
 import pages.ProductsPage;
 
-public class HeaderSelectBoxTest {
+public class HeaderBurgerLogoutLinkTest {
     LoginPage loginpage = new LoginPage();
     ProductsPage productPage = new ProductsPage();
     @Before
@@ -15,9 +14,9 @@ public class HeaderSelectBoxTest {
     }
 
     @Test
-    public void headerSelectBoxTest()  {
+    public void headerBurgerLogoutLinkTest()  {
         loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
-        productPage.clickAllOptions();
+        productPage.clickLogoutLink();
     }
 
     @After
