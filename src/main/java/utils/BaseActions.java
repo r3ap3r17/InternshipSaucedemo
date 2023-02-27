@@ -118,4 +118,8 @@ public class BaseActions {
         select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
         select.selectByIndex(index);
     }
+    public int getAllOptions(By locator) {
+        select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
+        return select.getOptions().size();
+    }
 }

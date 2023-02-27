@@ -17,24 +17,7 @@ public class HeaderSelectBoxTest {
     @Test
     public void headerSelectBoxAlphabeticallyTest()  {
         loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
-        productPage.selectAlphabetically();
-    }
-    @Test
-    public void headerSelectBoxReverseAlphabeticallyTest() {
-        loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
-        productPage.selectReverseAlphabetically();
-    }
-
-    @Test
-    public void headerSelectBoxLowToHigh() {
-        loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
-        productPage.selectPricesLowToHigh();
-    }
-
-    @Test
-    public void headerSelectBoxHighToLow() {
-        loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
-        productPage.selectPricesHighToLow();
+        productPage.clickAllOptions();
     }
 
     @After
