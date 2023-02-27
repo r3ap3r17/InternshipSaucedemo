@@ -22,12 +22,22 @@ public class ProductsPage extends BaseActions {
     private final By aboutLink = By.xpath("//a[@id='about_sidebar_link']");
     private final By logoutLink = By.xpath("//a[@id='logout_sidebar_link']");
     private final By resetAppStateLink = By.xpath("//a[@id='reset_sidebar_link']");
-    private final By addToCartButton = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
+    private final By addToCartButton1 = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
+    private final By addToCartButton2 = By.xpath("//button[@id='add-to-cart-sauce-labs-bike-light']");
     private final By cartIconSpan = By.xpath("//span[@class='shopping_cart_badge']");
+    private final By cartIcon = By.xpath("//a[@class='shopping_cart_link']");
 
+    // Clicks cart button
+    public void goToCart() {
+        clickOnElement(addToCartButton1);
+        clickOnElement(addToCartButton2);
+        clickOnElement(cartIcon);
+    }
+    // Clicks select item option with [int option] being index of that option
     public void clickSelectOption(int option) {
         selectOptionByIndex(filterSelect, option);
     }
+    // Goes through all options and clicks every single one of them
     public void clickAllOptions()  {
         for (int i = 0; i < getAllOptions(filterSelect); i++) {
             clickSelectOption(i);
@@ -70,11 +80,11 @@ public class ProductsPage extends BaseActions {
     }
     // Clicks reset app state and checks if cart icons apn still exists
     public void clickResetAppState() {
-        clickOnElement(addToCartButton);
+        clickOnElement(addToCartButton1);
         clickBurgerMenu();
         clickOnElement(resetAppStateLink);
         comment("user clicked on reset app state link");
         waitNotToBeVisible(cartIconSpan, CommonStrings.TIMEOUT_MEDIUM);
-        waitToBeVisible(addToCartButton, CommonStrings.TIMEOUT_MEDIUM); // this reproduces a bug
+        waitToBeVisible(addToCartButton1, CommonStrings.TIMEOUT_MEDIUM); // this reproduces a bug
     }
 }

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseActions {
@@ -91,6 +92,25 @@ public class BaseActions {
     protected List<WebElement> waitForVisibleElements(By locator, int time) {
         wait = new WebDriverWait(driver, time);
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+    // Returns String list of all prices
+    protected List<String> getTextFromWebElements(By locator, int time) {
+        List<WebElement> elementList = new ArrayList<WebElement>(waitForVisibleElements(locator, time));
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < elementList.size(); i++) {
+            list.add(elementList.get(i).getText());
+            System.out.println(list.get(i));
+        }
+        return list;
+    }
+    // Just example
+    protected void getTextFromWebElementsVoid(By locator, int time) {
+        List<WebElement> elementList = new ArrayList<WebElement>(waitForVisibleElements(locator, time));
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < elementList.size(); i++) {
+            list.add(elementList.get(i).getText().replaceAll("\\$", ""));
+            System.out.println(list.get(i));
+        }
     }
     // Clicks WebElement
     protected void clickOnElement(By locator) {
