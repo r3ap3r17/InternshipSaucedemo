@@ -8,14 +8,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class BaseActions {
     protected static WebDriver driver;
     protected static WebDriverWait wait;
     protected static WebElement element;
+    protected static Select select;
     private int counter = 1;
     // Prints a comment to console
     protected void comment(String message) {
@@ -74,6 +77,11 @@ public class BaseActions {
         wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    // Waits until all elements are visible and returns WebElements
+    protected List<WebElement> waitForVisibleElements(By locator, int time) {
+        wait = new WebDriverWait(driver, time);
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
     // Clicks WebElement
     protected void clickOnElement(By locator) {
         element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
@@ -94,5 +102,20 @@ public class BaseActions {
     protected String getTextFromElement(By locator) {
         element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         return element.getText();
+    }
+    // Waits for Select and selects option by text
+    public void selectOptionByVisibleText(By locator, String option) {
+        select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
+        select.selectByVisibleText(option);
+    }
+    // Waits for Select and selects option by attribute value
+    public void selectOptionByValue(By locator, String value) {
+        select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
+        select.selectByValue(value);
+    }
+    // Waits for Select and selects option by index
+    public void selectOptionByIndex(By locator, int index) {
+        select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
+        select.selectByIndex(index);
     }
 }
