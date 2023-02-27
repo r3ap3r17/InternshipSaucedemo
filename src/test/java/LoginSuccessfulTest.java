@@ -1,12 +1,10 @@
-package login;
-
 import constants.CommonStrings;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.LoginPage;
 
-public class LoginSuccessfullTest {
+public class LoginSuccessfulTest {
     LoginPage loginpage = new LoginPage();
     @Before
     public void initDriver() {
@@ -14,8 +12,8 @@ public class LoginSuccessfullTest {
     }
 
     @Test
-    public void loginSuccessfull() {
-        loginpage.login(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
+    public void loginSuccessfulTest() {
+        loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
     }
 
     @After

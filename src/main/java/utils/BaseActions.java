@@ -86,8 +86,13 @@ public class BaseActions {
     }
     // Clears and Enters text to WebElement
     protected void enterTextWithClear(By locator, String text) {
-        WebElement element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
+        element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
         element.clear();
         element.sendKeys(text);
+    }
+    // Returns text from WebElement
+    protected String getTextFromElement(By locator) {
+        element = waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM);
+        return element.getText();
     }
 }

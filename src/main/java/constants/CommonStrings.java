@@ -3,7 +3,7 @@ package constants;
 public class CommonStrings {
     // Timeouts used
     public static final int TIMEOUT_SHORT = 15;
-    public static final int TIMEOUT_MEDIUM = 30;
+    public static final int TIMEOUT_MEDIUM = 3;
     public static final int TIMEOUT_LONG = 60;
     // All urls used
     public static final String LOGIN_PAGE_URL = "https://www.saucedemo.com";
