@@ -22,5 +22,6 @@ public class CommonStrings {
 
     public static final String WRONG_USERNAME_ERROR = "Epic sadface: Username and password do not match any user in this service";
     public static final String WRONG_PASSWORD_ERROR = "Epic sadface: Username and password do not match any user in this service";
+    public static final String LOCKED_USER_ERROR = "Epic sadface: Sorry, this user has been locked out.";
 
 }
