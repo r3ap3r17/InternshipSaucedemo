@@ -78,7 +78,7 @@ public class ProductsPage extends BaseActions {
         comment("user clicked on logout link");
         waitToBeVisible(loginForm, CommonStrings.TIMEOUT_LONG);
     }
-    // Clicks reset app state and checks if cart icons apn still exists
+    // Clicks reset app state and checks if cart icons span still exists and if remove button became add to cart button
     public void clickResetAppState() {
         clickOnElement(addToCartButton1);
         clickBurgerMenu();

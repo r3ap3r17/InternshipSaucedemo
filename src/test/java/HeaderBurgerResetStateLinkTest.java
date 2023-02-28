@@ -13,6 +13,7 @@ public class HeaderBurgerResetStateLinkTest {
         loginpage.openUrl(CommonStrings.LOGIN_PAGE_URL);
     }
 
+    // Test is supposed to fail, because when app is restarted All item buttons should restart
     @Test
     public void headerBurgerResetStateLinkTest()  {
         loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
