@@ -14,7 +14,7 @@ public class HeaderClickCloseBurgerMenuTest {
     }
 
     @Test
-    public void headerClickBurgerMenuTest()  {
+    public void headerClickCloseBurgerMenuTest()  {
         loginpage.loginSuccess(CommonStrings.STANDARD_USER, CommonStrings.PASSWORD);
         productPage.clickCloseBurgerMenu();
     }

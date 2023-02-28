@@ -23,7 +23,7 @@ public class ProductsPage extends BaseActions {
     private final By logoutLink = By.xpath("//a[@id='logout_sidebar_link']");
     private final By resetAppStateLink = By.xpath("//a[@id='reset_sidebar_link']");
     private final By addToCartButton1 = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
-    private final By addToCartButton2 = By.xpath("//button[@id='add-to-cart-sauce-labs-bike-light']");
+    private final By addToCartButton2 = By.xpath("//button[@id='add-to-cart-sauce-labs-fleece-jacket']");
     private final By cartIconSpan = By.xpath("//span[@class='shopping_cart_badge']");
     private final By cartIcon = By.xpath("//a[@class='shopping_cart_link']");
 
@@ -50,7 +50,7 @@ public class ProductsPage extends BaseActions {
         comment("user clicked on burger menu");
         Assert.assertEquals(getAttributeValueFromElement(menuContainer, "aria-hidden"), "false");
     }
-    // Clicks burger Menu and check if its 'aria-hidden' attribute == true
+    // Clicks burger Menu and check if menu is not visible
     public void clickCloseBurgerMenu() {
         clickBurgerMenu();
         clickOnElement(closeBurgerMenu);

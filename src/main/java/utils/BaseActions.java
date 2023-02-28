@@ -20,7 +20,7 @@ public class BaseActions {
     protected static WebDriverWait wait;
     protected static WebElement element;
     protected static Select select;
-    private int counter = 1;
+    private static int counter = 1;
     // Prints a comment to console
     protected void comment(String message) {
         System.out.println("STEP " + counter + ": " + message.toUpperCase());
@@ -31,6 +31,7 @@ public class BaseActions {
     }
     // Reads browser key value in Configurations.properties file and creates a driver object based on that value
     private void init(String url) throws MalformedURLException {
+        counter = 1; // Restarts counter to 1, every time Driver is initiated
         switch (ReadProperties.readConfigBrowser().toLowerCase()) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", ReadProperties.readConfigChromePath());
@@ -94,11 +95,11 @@ public class BaseActions {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
     // Returns String list of all prices
-    protected List<String> getTextFromWebElements(By locator, int time) {
+    protected List<Double> getTextFromWebElements(By locator, int time) {
         List<WebElement> elementList = new ArrayList<WebElement>(waitForVisibleElements(locator, time));
-        List<String> list = new ArrayList<>();
+        List<Double> list = new ArrayList<>();
         for (int i = 0; i < elementList.size(); i++) {
-            list.add(elementList.get(i).getText());
+            list.add(Double.parseDouble(elementList.get(i).getText().replaceAll("\\$", "")));
             System.out.println(list.get(i));
         }
         return list;
@@ -106,9 +107,9 @@ public class BaseActions {
     // Just example
     protected void getTextFromWebElementsVoid(By locator, int time) {
         List<WebElement> elementList = new ArrayList<WebElement>(waitForVisibleElements(locator, time));
-        List<String> list = new ArrayList<>();
+        List<Double> list = new ArrayList<>();
         for (int i = 0; i < elementList.size(); i++) {
-            list.add(elementList.get(i).getText().replaceAll("\\$", ""));
+            list.add(Double.parseDouble(elementList.get(i).getText().replaceAll("\\$", "")));
             System.out.println(list.get(i));
         }
     }
@@ -157,5 +158,9 @@ public class BaseActions {
     public int getAllOptions(By locator) {
         select = new Select(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM));
         return select.getOptions().size();
+    }
+    // Returns Double from elements text
+    protected Double getDoubleFromWebElement(By locator) {
+        return Double.parseDouble(waitForVisible(locator, CommonStrings.TIMEOUT_MEDIUM).getText().replaceAll("\\D+",""));
     }
 }

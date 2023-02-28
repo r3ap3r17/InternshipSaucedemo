@@ -12,6 +12,7 @@ public class CheckoutPage extends BaseActions {
 
     private final By errorMessage = By.xpath("//div[contains(@class,'error')]");
 
+    // Fills Checkout form and clicks continue
     public void fillCheckoutForm(String firstName,String lastName,String postCode) {
         enterText(firstNameField, firstName);
         comment("user typed to first name input");
